@@ -26,12 +26,17 @@ func (t *TemplateRenderer) Render(w io.Writer, name string, data interface{}, c 
 
 func main() {
 	e := echo.New()
+	e.Static("static", "static")
+
+	t := template.Must(template.ParseGlob("views/*.html"))
+
 	renderer := &TemplateRenderer{
-		templates: template.Must(template.ParseGlob("views/*.html")),
+		templates: t,
 	}
 	e.Renderer = renderer
 
 	e.GET("/", handlers.IndexHandler)
+	e.GET("/todos", handlers.HandleLoadTodos)
 
 	e.Logger.Fatal(e.Start(":8080"))
 }

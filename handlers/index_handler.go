@@ -10,5 +10,5 @@ func IndexHandler(c echo.Context) error {
 	data := map[string]interface{}{
 		"name": "Gecho",
 	}
-	return c.Render(http.StatusOK, "index.html", data)
+	return c.Render(http.StatusOK, "index", data)
 }

@@ -1,12 +1,21 @@
+{{ define "index"}}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Welcome to Gecho!</title>
+    <link rel="stylesheet" href="/static/styles.css">
     <script src="https://unpkg.com/htmx.org@1.9.11"></script>
 </head>
 <body>
-        <h1>Welcome to {{ .name }}!</h1>
+    <div class="container">
+        <h1 class="title">Welcome to {{ .name }}!</h1>
+
+        <ul id="todo-list" hx-trigger="load" hx-get="/todos" hx-target="#todo-list" hx-swap="innerHTML" class="todo-list">
+            {{ template "todo_items" .}}
+        </ul>
+    </div>
 </body>
 </html>
+{{ end }}
