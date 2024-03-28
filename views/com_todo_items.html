@@ -1,5 +1,0 @@
-{{ define "todo_items" }}
-    {{ range .Todos }}
-        <li class="todo-item">{{ .Title }} <input type="checkbox" name="complete" {{ if .Complete }}checked{{ end}} /></li>
-    {{ end }}
-{{ end }}

@@ -1,18 +1,25 @@
 package handlers
 
 import (
-	"net/http"
-
+	"github.com/blathe/gecho/db"
 	"github.com/blathe/gecho/models"
-	"github.com/labstack/echo"
 )
 
-func HandleLoadTodos(c echo.Context) error {
+func HandleLoadTodos(todos *db.TodoDatabase) map[string][]models.Todo {
 	data := map[string][]models.Todo{
-		"Todos": {
-			{Title: "Test", Complete: false},
-			{Title: "Walk the dog", Complete: true},
-		},
+		"Todos": todos.Todos,
 	}
-	return c.Render(http.StatusOK, "todo_items", data)
+	return data
+}
+
+func HandleAddTodo(todos *db.TodoDatabase, newTodo *models.Todo) {
+	todos.Todos = append(todos.Todos, *newTodo)
+}
+
+func HandleToggleTodo(todos *db.TodoDatabase, id int, newStatus bool) {
+	for _, v := range todos.Todos {
+		if v.Id == id {
+			v.Complete = newStatus
+		}
+	}
 }

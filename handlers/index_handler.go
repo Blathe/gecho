@@ -1,14 +1,13 @@
 package handlers
 
 import (
-	"net/http"
-
-	"github.com/labstack/echo"
+	"github.com/blathe/gecho/db"
+	"github.com/blathe/gecho/models"
 )
 
-func IndexHandler(c echo.Context) error {
-	data := map[string]interface{}{
-		"name": "Gecho",
+func IndexHandler(db *db.TodoDatabase) map[string][]models.Todo {
+	todos := map[string][]models.Todo{
+		"Todos": db.Todos,
 	}
-	return c.Render(http.StatusOK, "index", data)
+	return todos
 }

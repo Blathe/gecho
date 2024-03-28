@@ -1,0 +1,3 @@
+{{ define "todo_item" }}
+    <li class="todo-item">{{ .Title }} <input hx-post="/toggle-todo?id={{ .Id }}&currentStatus={{ .Complete }}" hx-trigger="click" type="checkbox" name="complete" {{ if .Complete }}checked{{ end}} /></li>
+{{ end }}
