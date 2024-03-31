@@ -55,9 +55,10 @@ h1, h2, h3, h4 {
     background-color: lightgrey;
 }
 
-.todo-complete {
+.todo-item:has(input:checked) {
     text-decoration-line: line-through;
 }
+
 
 .add-todo-form {
     display: flex;

@@ -51,7 +51,7 @@ func main() {
 	}
 	e.Renderer = renderer
 
-	//Paths
+	//Routes
 	e.GET("/", func(c echo.Context) error {
 		return c.Render(http.StatusOK, "index", nil)
 	})
@@ -85,7 +85,7 @@ func main() {
 		new_todo.Id = id
 		return c.Render(http.StatusOK, "todo_item", new_todo)
 	})
-	e.PUT("/todos/:id", func(c echo.Context) error {
+	e.PUT("/todos/:id/complete", func(c echo.Context) error {
 		id, err := utils.StringToInt(c.Param("id"))
 		if err != nil {
 			fmt.Println("error with ID")
