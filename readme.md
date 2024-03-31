@@ -1,5 +1,7 @@
-**Gecho - Go + HTMX + HTML Templates + SQLite**
-Gecho is a template to quickly spin up a Go web application using HTMX, the Echo framework, Go HTML templates, and a SQLite database.
+**Gecho - Go + Echo + HTMX + HTML Templates + SQLite**
+
+Gecho is a template to quickly spin up a Go web application using HTMX, Echo framework, go HTML templates, and a SQLite database.
+
 Out of the box it includes a quick Todo List as a starting point to show how things are done, but should be quick to remove the example code and use this for your own project.
 
 This does not include best practices, and my Go code is probably a little messy, but this workflow made sense to me.
