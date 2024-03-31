@@ -59,7 +59,7 @@ func (t *Todos) GetByID(id int) (Todo, error) {
 	return todo, nil
 }
 
-func (t *Todos) UpdateComplete(id int) error {
+func (t *Todos) ToggleComplete(id int) error {
 	_, err := t.db.Exec("UPDATE todos SET complete = NOT(complete) WHERE id=?;", id)
 	if err != nil {
 		fmt.Println(err)

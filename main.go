@@ -91,7 +91,7 @@ func main() {
 			fmt.Println("error with ID")
 			return c.NoContent(400)
 		}
-		err = todo_list.UpdateComplete(id)
+		err = todo_list.ToggleComplete(id)
 		if err != nil {
 			fmt.Println(err)
 			return c.NoContent(400)
