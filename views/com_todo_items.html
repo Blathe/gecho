@@ -1,0 +1,5 @@
+{{ define "todo_items" }}
+    {{ range .Todos }}
+        {{ template "todo_item" . }}
+    {{ end }}
+{{ end }}

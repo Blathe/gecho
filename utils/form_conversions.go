@@ -1,22 +1,23 @@
 package utils
 
 import (
-	"fmt"
 	"strconv"
 )
 
-func ToBool(value string) bool {
+// Convert a form value (string) to bool.
+func StringToBool(value string) (bool, error) {
 	v, err := strconv.ParseBool(value)
 	if err != nil {
-		fmt.Println("error converting form data to bool...")
+		return false, err
 	}
-	return v
+	return v, nil
 }
 
-func ToInt(value string) int {
+// Convert a form value (string) to int.
+func StringToInt(value string) (int, error) {
 	v, err := strconv.Atoi(value)
 	if err != nil {
-		fmt.Println("error converting form data to integer...")
+		return 0, err
 	}
-	return v
+	return v, nil
 }

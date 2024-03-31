@@ -16,10 +16,21 @@ func HandleAddTodo(todos *db.TodoDatabase, newTodo *models.Todo) {
 	todos.Todos = append(todos.Todos, *newTodo)
 }
 
-func HandleToggleTodo(todos *db.TodoDatabase, id int, newStatus bool) {
-	for _, v := range todos.Todos {
-		if v.Id == id {
-			v.Complete = newStatus
+func HandleToggleTodo(todos *db.TodoDatabase, id int) *models.Todo {
+	for i := range todos.Todos {
+		if todos.Todos[i].Id == id {
+			todos.Todos[i].Complete = !todos.Todos[i].Complete
+			return &todos.Todos[i]
 		}
 	}
+	return nil
+}
+
+func HandleDeleteTodo(todos *models.Todos, todo_id int) (int, error) {
+	err := todos.Delete(todo_id)
+	if err != nil {
+		return 0, err
+	}
+
+	return todo_id, nil
 }

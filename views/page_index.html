@@ -1,0 +1,29 @@
+{{ define "index"}}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to Gecho!</title>
+    <link rel="stylesheet" href="/static/styles.css">
+    <script src="https://unpkg.com/htmx.org@1.9.11"></script>
+</head>
+<body>
+    <div class="container">
+        <h1 class="title">Hello, Gecho.</h1>
+
+        <div class="todo-list-wrapper">
+            <h2>Todo List</h2>
+            <form class="add-todo-form" hx-post="/todos" hx-target="#todo-list" hx-swap="beforeend">
+                <input id="todo-title-input" class="input" type="text" name="todo-title" required/>
+                <button class="btn" type="submit">Add Todo</button>
+            </form>
+            
+            <ul hx-get="/todos" hx-target="#todo-list" hx-swap="innerHTML" hx-trigger="load" id="todo-list" class="todo-list">
+                {{ template "todo_items" }}
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
+{{ end }}
